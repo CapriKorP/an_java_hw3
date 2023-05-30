@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static int calcService(int year) {
 
-        int numb = ((year % 400 == 0 && year % 100 == 0) || (year % 4 == 0 && year % 100 > 0)) ? 1 : -1;
+        int numb = ((year % 400 == 0 && year % 100 == 0) || (year % 4 == 0 && year % 100 != 0)) ? 1 : -1;
         return numb;
     }
 
@@ -38,7 +38,7 @@ public class Main {
                         System.out.println("Введено неправильное количество дней!");
                     } else if ((x == 1 && numb == 365) || (x == -1 && numb == 366)) {
                         System.out.println("Вы допустили ошибку! Итоговое количество очков " + gamePoints);
-                        System.out.println("");
+                        System.out.println();
                         break;
                     } else {
                         gamePoints++;
