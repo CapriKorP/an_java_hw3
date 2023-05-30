@@ -2,16 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static int calcService(int year) {
-        int numb = 0;
-        if (year % 400 == 0 && year % 100 == 0) {
-            numb = 1;
-        } else if (year % 4 == 0 && year % 100 > 0) {
-            numb = 1;
-        } else if (year % 100 == 0) {
-            numb = -1;
-        } else {
-            numb = -1;
-        }
+
+        int numb = ((year % 400 == 0 && year % 100 == 0) || (year % 4 == 0 && year % 100 > 0)) ? 1 : -1;
         return numb;
     }
 
