@@ -2,7 +2,16 @@ import java.util.Scanner;
 
 public class Main {
     public static int calcService(int year) {
-        int numb = ((year % 400 == 0) || (year % 100 != 0 && year % 400 != 0 && year % 4 == 0)) ? 1 : -1;
+        int numb = 0;
+        if (year % 400 == 0 && year % 100 == 0) {
+            numb = 1;
+        } else if (year % 4 == 0 && year % 100 > 0) {
+            numb = 1;
+        } else if (year % 100 == 0) {
+            numb = -1;
+        } else {
+            numb = -1;
+        }
         return numb;
     }
 
@@ -11,7 +20,9 @@ public class Main {
         while (true) {
             System.out.println(">>>Добро пожаловать в игру \"Угадай год!\"");
             System.out.println("Для начала наберите \"Y\", для выхода \"N\"");
+
             Scanner scanner = new Scanner(System.in);
+
             String start = scanner.nextLine();
             if (start.equals("Y")) {
 
@@ -19,18 +30,18 @@ public class Main {
 
                 while (true) {
                     System.out.print("Введите год в формате  \"уууу\" ");
-                    Scanner scaner = new Scanner(System.in);
-                    int year = scaner.nextInt();
+
+                    int year = scanner.nextInt();
 
                     if (year < 1000 || year > 9999) {
                         System.out.println("Неверно введен год");
                         continue;
                     }
                     System.out.print("Введите количество дней в году(365 или 366): ");
-                    Scanner scannerYear = new Scanner(System.in);
-                    int numb = scannerYear.nextInt();
 
+                    int numb = scanner.nextInt();
                     int x = calcService(year);
+
                     if (numb != 365 && numb != 366) {
                         System.out.println("Введено неправильное количество дней!");
                     } else if ((x == 1 && numb == 365) || (x == -1 && numb == 366)) {
